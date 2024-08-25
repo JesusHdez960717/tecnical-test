@@ -8,10 +8,10 @@ import 'package:tecnical_test/main.dart';
 
 class DetailsScreen extends StatelessWidget {
   //#region navigation-config
-  static const String ROUTE_NAME = 'details';
-  static const String ROUTE_PATH = '/$ROUTE_NAME';
+  static const String routeName = 'details';
+  static const String routePath = '/$routeName';
 
-  static Widget ROUTE_BUILDER(
+  static Widget routeBuilder(
     BuildContext context,
     GoRouterState state,
   ) {
@@ -22,7 +22,7 @@ class DetailsScreen extends StatelessWidget {
 
   static void push(UserResponse user) {
     Global.context.pushNamed(
-      DetailsScreen.ROUTE_NAME,
+      DetailsScreen.routeName,
       extra: user,
     );
   }
@@ -62,10 +62,10 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details"),
+        title: Text(intl.details),
         actions: [
           Tooltip(
-            message: "Go to marker",
+            message: intl.goToMarker,
             child: IconButton(
               onPressed: () {
                 controller.move(

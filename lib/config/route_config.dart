@@ -6,18 +6,18 @@ import 'package:tecnical_test/screen/general_screen.dart';
 
 class RouteConfig {
   static RouterConfig<Object> router = GoRouter(
-    initialLocation: GeneralScreen.ROUTE_PATH,
+    initialLocation: GeneralScreen.routePath,
     navigatorKey: navigatorKey,
     routes: [
       GoRoute(
-        name: GeneralScreen.ROUTE_NAME,
-        path: GeneralScreen.ROUTE_PATH,
-        builder: GeneralScreen.ROUTE_BUILDER,
+        name: GeneralScreen.routeName,
+        path: GeneralScreen.routePath,
+        builder: GeneralScreen.routeBuilder,
       ),
       GoRoute(
-        name: DetailsScreen.ROUTE_NAME,
-        path: DetailsScreen.ROUTE_PATH,
-        builder: DetailsScreen.ROUTE_BUILDER,
+        name: DetailsScreen.routeName,
+        path: DetailsScreen.routePath,
+        builder: DetailsScreen.routeBuilder,
       ),
     ],
   );
