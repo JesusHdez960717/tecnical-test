@@ -17,8 +17,33 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  #lints
   flutter_lints: ^4.0.0
+
+  #code gen
+  build_runner: 2.4.10
+
+  #app config
+  flutter_native_splash: 2.4.1
+  flutter_launcher_icons: 0.13.1
+
+#configuration of splash screen, if something change, run: `fvm flutter pub run flutter_native_splash:create`
+flutter_native_splash:
+  ios: true
+  android_12:
+    color: "#ffffff"
+  color: "#ffffff"
+  web: true
+
+#configuration of flutter_icons, if something change, run: `fvm flutter pub run flutter_launcher_icons`
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app/app_icon.png"
 
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/app/
