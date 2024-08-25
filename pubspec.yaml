@@ -21,6 +21,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  #routing
+  go_router: 14.2.7
+
   #lints
   flutter_lints: ^4.0.0
 
