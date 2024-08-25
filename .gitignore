@@ -43,3 +43,4 @@ app.*.map.json
 #fvm
 .fvm/flutter_sdk
 .fvm/versions/
+pubspec.lock
