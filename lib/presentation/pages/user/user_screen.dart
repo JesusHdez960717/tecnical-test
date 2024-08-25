@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:tecnical_test/api/api_response.dart';
-import 'package:tecnical_test/main.dart';
-import 'package:tecnical_test/provider/user_provider.dart';
+import 'package:tecnical_test/app_exporter.dart';
+import 'package:tecnical_test/domain/domain_exporter.dart';
+import 'package:tecnical_test/presentation/provider/provider_exporter.dart';
 
-import 'details_screen.dart';
+import 'details/details_screen.dart';
 
 class GeneralScreen extends ConsumerWidget {
   //#region navigation-config
@@ -29,7 +29,7 @@ class GeneralScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<PagingController<int, UserResponse>> activity =
+    final AsyncValue<PagingController<int, UserDomain>> activity =
         ref.watch(userProvider);
 
     return Scaffold(
@@ -40,11 +40,11 @@ class GeneralScreen extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () => ref.read(userProvider.notifier).fetchUsers(),
         child: activity.when(
-          data: (data) => PagedListView<int, UserResponse>(
+          data: (data) => PagedListView<int, UserDomain>(
             shrinkWrap: true,
             physics: const AlwaysScrollableScrollPhysics(),
             pagingController: data,
-            builderDelegate: PagedChildBuilderDelegate<UserResponse>(
+            builderDelegate: PagedChildBuilderDelegate<UserDomain>(
               noItemsFoundIndicatorBuilder: (context) => Center(
                 child: Text(intl.noData),
               ),
@@ -63,7 +63,7 @@ class GeneralScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildSingleItem(UserResponse item) {
+  Widget _buildSingleItem(UserDomain item) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: InkWell(

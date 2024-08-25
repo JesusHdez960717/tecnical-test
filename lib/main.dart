@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tecnical_test/config/route_config.dart';
-import 'package:tecnical_test/l10n/l10n.dart';
+import 'package:tecnical_test/config/config_exporter.dart';
+import 'package:tecnical_test/l10n/l10n_exporter.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  ///add this option so the .push method can override url
   GoRouter.optionURLReflectsImperativeAPIs = true;
 
   WidgetsFlutterBinding.ensureInitialized();

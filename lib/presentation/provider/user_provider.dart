@@ -1,19 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:tecnical_test/api/api_response.dart';
-import 'package:tecnical_test/api/api_test.dart';
+import 'package:tecnical_test/data/repo/repo_exporter.dart';
+import 'package:tecnical_test/domain/domain_exporter.dart';
 
 final userProvider = StateNotifierProvider<UserProvider,
-    AsyncValue<PagingController<int, UserResponse>>>((ref) {
+    AsyncValue<PagingController<int, UserDomain>>>((ref) {
   return UserProvider();
 });
 
 class UserProvider
-    extends StateNotifier<AsyncValue<PagingController<int, UserResponse>>> {
-  late PagingController<int, UserResponse> pagingController;
+    extends StateNotifier<AsyncValue<PagingController<int, UserDomain>>> {
+  late PagingController<int, UserDomain> pagingController;
 
   static const int defaultPageSize = 15;
-  final ApiTest _apiService = ApiTest();
+  final UserRepo _repo = UserRepo();
 
   UserProvider() : super(const AsyncValue.loading()) {
     _resetPageController();
@@ -39,7 +39,7 @@ class UserProvider
       }
 
       //cargo los usuarios nuevos
-      final users = await _apiService.fetch(page: page, size: defaultPageSize);
+      final users = await _repo.fetch(page: page, size: defaultPageSize);
 
       //veo si lo agrego porque hay mas o xq es el ultimo
       if (users.length < defaultPageSize) {

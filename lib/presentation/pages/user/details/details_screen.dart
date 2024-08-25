@@ -3,8 +3,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:tecnical_test/api/api_response.dart';
-import 'package:tecnical_test/main.dart';
+import 'package:tecnical_test/config/config_exporter.dart';
+import 'package:tecnical_test/domain/domain_exporter.dart';
+import 'package:tecnical_test/app_exporter.dart';
 
 class DetailsScreen extends StatelessWidget {
   //#region navigation-config
@@ -16,11 +17,11 @@ class DetailsScreen extends StatelessWidget {
     GoRouterState state,
   ) {
     return DetailsScreen(
-      user: state.extra as UserResponse,
+      userDomain: state.extra as UserDomain,
     );
   }
 
-  static void push(UserResponse user) {
+  static void push(UserDomain user) {
     Global.context.pushNamed(
       DetailsScreen.routeName,
       extra: user,
@@ -29,32 +30,21 @@ class DetailsScreen extends StatelessWidget {
 
   //#endregion navigation-config
   //#region map-default-config
-  static const double defaultZoom = 15.0;
-  static const int minZoom = 10;
-  static const int maxZoom = 20;
-
-  static const String urlTemplate =
-      'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-  static const String pckName = 'dev.root101.tecnical_test';
-
-  static const String markerUrl = 'assets/map/marker.svg';
   static const double markerSize = 50.0;
 
-  static const String myLocationUrl = 'assets/map/my-location.svg';
-
   //#endregion map-default-config
-  final UserResponse user;
+  final UserDomain userDomain;
   late final LatLng userLocation;
 
   final MapController controller = MapController();
 
   DetailsScreen({
-    required this.user,
+    required this.userDomain,
     super.key,
   }) {
     userLocation = LatLng(
-      user.location.coordinates.latitude,
-      user.location.coordinates.longitude,
+      userDomain.location.coordinates.latitude,
+      userDomain.location.coordinates.longitude,
     );
   }
 
@@ -70,14 +60,14 @@ class DetailsScreen extends StatelessWidget {
               onPressed: () {
                 controller.move(
                   userLocation,
-                  defaultZoom,
+                  MapConfig.defaultZoom,
                 );
               },
               icon: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SvgPicture.asset(
-                  myLocationUrl,
-                  semanticsLabel: myLocationUrl,
+                  AssetsConfig.myLocationUrl,
+                  semanticsLabel: AssetsConfig.myLocationUrl,
                 ),
               ),
             ),
@@ -90,14 +80,14 @@ class DetailsScreen extends StatelessWidget {
             mapController: controller,
             options: MapOptions(
               initialCenter: userLocation,
-              initialZoom: defaultZoom,
+              initialZoom: MapConfig.defaultZoom,
             ),
             children: [
               TileLayer(
-                urlTemplate: urlTemplate,
-                userAgentPackageName: pckName,
-                minNativeZoom: minZoom,
-                maxNativeZoom: maxZoom,
+                urlTemplate: MapConfig.urlTemplate,
+                userAgentPackageName: MapConfig.pckName,
+                minNativeZoom: MapConfig.minZoom,
+                maxNativeZoom: MapConfig.maxZoom,
               ),
               MarkerLayer(
                 markers: [
@@ -107,8 +97,8 @@ class DetailsScreen extends StatelessWidget {
                     width: markerSize,
                     height: markerSize,
                     child: SvgPicture.asset(
-                      markerUrl,
-                      semanticsLabel: markerUrl,
+                      AssetsConfig.markerUrl,
+                      semanticsLabel: AssetsConfig.markerUrl,
                       width: markerSize,
                       height: markerSize,
                       fit: BoxFit.scaleDown,
