@@ -21,8 +21,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  #general ui
+  flutter_svg: 2.0.10+1
+
   #routing
   go_router: 14.2.7
+
+  #map
+  flutter_map: 7.0.2
+  latlong2: 0.9.1
 
   #lints
   flutter_lints: ^4.0.0
@@ -54,3 +61,4 @@ flutter:
 
   assets:
     - assets/app/
+    - assets/map/

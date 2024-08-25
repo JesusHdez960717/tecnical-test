@@ -102,15 +102,15 @@ class Street {
 }
 
 class Coordinates {
-  String latitude;
-  String longitude;
+  double latitude;
+  double longitude;
 
   Coordinates({required this.latitude, required this.longitude});
 
   factory Coordinates.fromJson(Map<String, dynamic> json) {
     return Coordinates(
-      latitude: json['latitude'],
-      longitude: json['longitude'],
+      latitude: double.tryParse(json['latitude']) ?? 0.0,
+      longitude:  double.tryParse(json['longitude']) ?? 0.0,
     );
   }
 }
