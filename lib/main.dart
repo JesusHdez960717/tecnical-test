@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tecnical_test/api/api_test.dart';
+
+import 'api/api_response.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,12 +36,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  ApiTest apiTest = ApiTest();
+  List<UserResponse> list = [];
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+
+    fetchDataFromApi();
+  }
+
+  Future fetchDataFromApi() async {
+    list = await apiTest.fetch(page: 0, size: 10);
+    setState(() {});
   }
 
   @override
@@ -49,23 +59,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: ListView(
+          children: list
+              .map(
+                (e) => ListTile(
+                  leading: Image.network(e.picture.thumbnail),
+                  title: Text('${e.name.title} ${e.name.first} ${e.name.last}'),
+                  subtitle: Text(e.email),
+                ),
+              )
+              .toList(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
