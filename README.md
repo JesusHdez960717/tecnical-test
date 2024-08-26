@@ -1,6 +1,7 @@
-# tecnical_test
+# Prueba Técnica
+Este proyecto es la solución a la prueba técnipa para la plaza de desarrolador Flutter
 
-## Prueba Técnica
+## Fichero original de prueba
 [Prueba Técnica.pdf](https://github.com/user-attachments/files/16742834/Prueba.Tecnica.pdf)
 
 ## Flutter version
