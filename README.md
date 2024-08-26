@@ -1,16 +1,55 @@
-# tecnical_test
+# Prueba Técnica
+Este proyecto es la solución a la prueba técnipa para la plaza de desarrolador Flutter
 
-Prueba tecnica para plaza de desarrollador Flutter
+## Fichero original de prueba
+[Prueba Técnica.pdf](https://github.com/user-attachments/files/16742834/Prueba.Tecnica.pdf)
 
-## Getting Started
+## Flutter version
 
-This project is a starting point for a Flutter application.
+El proyecto se desarrolló y probó utlizando la version `3.24.0` del sdk de flutter, configurada
+mediante el `fvm`
 
-A few resources to get you started if this is your first Flutter project:
+## Locale
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Se implementó por defecto las traducciones a Inglés (en) y Español (es)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para cambiar el locale modificar:
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: intl.technicalTest,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        useMaterial3: true,
+      ),
+      locale: const Locale('es'),
+      //const Locale('en'), =====>>>>> modificar aqui y cambiar
+      routerConfig: RouteConfig.router,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+    );
+  }
+}
+```
+
+## Screenshots:
+
+### Lista de usuarios
+
+![users](https://github.com/user-attachments/assets/705382b3-5ab3-43e0-b5c1-2c05c79bdd73)
+
+### Detalles de usuarios
+
+![detail](https://github.com/user-attachments/assets/c865d98f-c8ae-463f-9857-4969ee846015)
+
+### Ejemplo completo
+
+https://github.com/user-attachments/assets/9aa4d344-ca6e-4139-8ed2-47a711f9ea3d
+
+

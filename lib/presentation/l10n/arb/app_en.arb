@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "es": "Spanish",
+  "en": "English",
+  "userList": "User list",
+  "noData": "No Data",
+  "noMoreUsers": "No More Users",
+  "errorLoadingUsersFromApi": "Error Loading Users from API",
+  "details": "Details",
+  "goToMarker": "Go to User Marker"
+}

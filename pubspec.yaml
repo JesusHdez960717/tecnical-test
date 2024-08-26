@@ -2,23 +2,73 @@ name: tecnical_test
 description: "Prueba tecnica para plaza de desarrollador Flutter"
 publish_to: 'none'
 
-version: 0.0.1+1
+version: 1.0.0+1
 
 environment:
+  flutter: ^3.24.0
   sdk: ^3.5.0
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
+  #state management
+  flutter_riverpod: ^2.5.1
+
+  #general ui
+  flutter_svg: 2.0.10+1
+  infinite_scroll_pagination: 4.0.0
   cupertino_icons: ^1.0.8
+
+  #routing
+  go_router: 14.2.7
+
+  #map
+  flutter_map: 7.0.2
+  latlong2: 0.9.1
+
+  #rest client
+  dio: 5.6.0
+
+  #utils
+  intl: 0.19.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  #lints
   flutter_lints: ^4.0.0
+
+  #code gen
+  build_runner: 2.4.10
+
+  #app config
+  flutter_native_splash: 2.4.1
+  flutter_launcher_icons: 0.13.1
+
+#configuration of splash screen, if something change, run: `fvm flutter pub run flutter_native_splash:create`
+flutter_native_splash:
+  ios: true
+  android_12:
+    color: "#ffffff"
+  color: "#ffffff"
+  web: true
+
+#configuration of flutter_icons, if something change, run: `fvm flutter pub run flutter_launcher_icons`
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app/app_icon.png"
 
 flutter:
 
+  generate: true
   uses-material-design: true
+
+  assets:
+    - assets/app/
+    - assets/map/
+    - assets/icons/

@@ -1,0 +1,11 @@
+{
+  "@@locale": "es",
+  "es": "Español",
+  "en": "Inglés",
+  "userList": "Lista de usuarios",
+  "noData": "No Data",
+  "noMoreUsers": "No more users",
+  "errorLoadingUsersFromApi": "Error cargando los usuarios desde la api",
+  "details": "Detalles",
+  "goToMarker": "Ir al marcador del usuario"
+}
