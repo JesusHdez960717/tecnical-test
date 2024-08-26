@@ -17,12 +17,14 @@ class UserApiResponse {
 }
 
 class UserModel {
+  String gender;
   NameModel name;
   LocationModel location;
   String email;
   PictureModel picture;
 
   UserModel({
+    required this.gender,
     required this.name,
     required this.location,
     required this.email,
@@ -31,6 +33,7 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
+      gender: json['gender'],
       name: NameModel.fromJson(json['name']),
       location: LocationModel.fromJson(json['location']),
       email: json['email'],
@@ -110,7 +113,7 @@ class CoordinatesModel {
   factory CoordinatesModel.fromJson(Map<String, dynamic> json) {
     return CoordinatesModel(
       latitude: double.tryParse(json['latitude']) ?? 0.0,
-      longitude:  double.tryParse(json['longitude']) ?? 0.0,
+      longitude: double.tryParse(json['longitude']) ?? 0.0,
     );
   }
 }
