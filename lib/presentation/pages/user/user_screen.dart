@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:tecnical_test/app_exporter.dart';
 import 'package:tecnical_test/domain/domain_exporter.dart';
+import 'package:tecnical_test/presentation/pages/user/widget/user_tile.dart';
 import 'package:tecnical_test/presentation/provider/provider_exporter.dart';
 
 import 'details/details_screen.dart';
@@ -35,12 +36,12 @@ class GeneralScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(intl.technicalTest),
+        title: Text(intl.userList),
       ),
       body: RefreshIndicator(
         onRefresh: () => ref.read(userProvider.notifier).fetchUsers(),
         child: activity.when(
-          data: (data) => PagedListView<int, UserDomain>(
+          data: (data) => PagedListView.separated(
             shrinkWrap: true,
             physics: const AlwaysScrollableScrollPhysics(),
             pagingController: data,
@@ -53,27 +54,33 @@ class GeneralScreen extends ConsumerWidget {
                   intl.noMoreUsers,
                 ),
               ),
-              itemBuilder: (context, item, index) => _buildSingleItem(item),
+              itemBuilder: (context, item, index) => UserTile(
+                item: item,
+                onTap: () => DetailsScreen.push(item),
+              ),
+            ),
+            separatorBuilder: (context, index) => const Divider(
+              height: 0,
+              indent: 0,
+              thickness: 1,
             ),
           ),
-          error: (error, stackTrace) => Text(intl.errorLoadingUsersFromApi),
-          loading: () => const Center(child: CircularProgressIndicator()),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSingleItem(UserDomain item) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: InkWell(
-        onTap: () => DetailsScreen.push(item),
-        child: ListTile(
-          leading: Image.network(item.picture.thumbnail),
-          title: Text(
-            '${item.name.title} ${item.name.first} ${item.name.last}',
+          error: (error, stackTrace) => Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(intl.errorLoadingUsersFromApi),
+                ElevatedButton(
+                  onPressed: () {
+                    ref.read(userProvider.notifier).fetchUsers();
+                  },
+                  child: const Icon(Icons.search),
+                ),
+              ],
+            ),
           ),
-          subtitle: Text(item.email),
+          loading: () => const Center(child: CircularProgressIndicator()),
         ),
       ),
     );

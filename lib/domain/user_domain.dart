@@ -1,10 +1,14 @@
+import 'gender.dart';
+
 class UserDomain {
+  Gender gender;
   NameDomain name;
   LocationDomain location;
   String email;
   PictureDomain picture;
 
   UserDomain({
+    required this.gender,
     required this.name,
     required this.location,
     required this.email,
@@ -18,6 +22,8 @@ class NameDomain {
   String last;
 
   NameDomain({required this.title, required this.first, required this.last});
+
+  String get fullName => '$title $first $last';
 }
 
 class LocationDomain {

@@ -8,7 +8,7 @@ class UserApi {
     //hace la peticion a la api con la pagina y el tamanno determinado
     //NOTA: solo pide de la api los campos que se necesitan
     String path =
-        'https://randomuser.me/api/?page=$page&results=$size&inc=name,location,email,picture';
+        'https://randomuser.me/api/?page=$page&results=$size&inc=name,location,email,picture,gender';
 
     Response response = await dio.get(path);
 

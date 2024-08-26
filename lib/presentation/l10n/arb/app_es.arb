@@ -2,7 +2,7 @@
   "@@locale": "es",
   "es": "Español",
   "en": "Inglés",
-  "technicalTest": "Prueba técnica",
+  "userList": "Lista de usuarios",
   "noData": "No Data",
   "noMoreUsers": "No more users",
   "errorLoadingUsersFromApi": "Error cargando los usuarios desde la api",

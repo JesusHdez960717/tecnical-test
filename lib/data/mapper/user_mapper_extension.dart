@@ -12,6 +12,7 @@ extension UserListMapperExtension on List<UserModel> {
 extension UserMapperExtension on UserModel {
   UserDomain toUserDomain() {
     return UserDomain(
+      gender: Gender.valueOf(gender),
       name: NameDomain(
         title: name.title,
         first: name.first,

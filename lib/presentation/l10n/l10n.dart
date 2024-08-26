@@ -6,7 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:flutter/widgets.dart';
-import 'package:tecnical_test/l10n/l10n_exporter.dart';
+import 'package:tecnical_test/presentation/l10n/l10n_exporter.dart';
 
 export 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
