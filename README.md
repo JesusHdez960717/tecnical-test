@@ -1,9 +1,16 @@
 # tecnical_test
 
+## Flutter version
+
+El proyecto se desarrolló y probó utlizando la version `3.24.0` del sdk de flutter, configurada
+mediante el `fvm`
+
 ## Locale
+
 Se implementó por defecto las traducciones a Inglés (en) y Español (es)
 
 Para cambiar el locale modificar:
+
 ```dart
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +24,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      locale: const Locale('es'), //const Locale('en'), =====>>>>> modificar aqui y cambiar
+      locale: const Locale('es'),
+      //const Locale('en'), =====>>>>> modificar aqui y cambiar
       routerConfig: RouteConfig.router,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -26,4 +34,18 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-Por una cuestión de tiempo y de trabajo 
+## Screenshots:
+
+### Lista de usuarios
+
+![users](https://github.com/user-attachments/assets/705382b3-5ab3-43e0-b5c1-2c05c79bdd73)
+
+### Detalles de usuarios
+
+![detail](https://github.com/user-attachments/assets/c865d98f-c8ae-463f-9857-4969ee846015)
+
+### Ejemplo completo
+
+https://github.com/user-attachments/assets/9aa4d344-ca6e-4139-8ed2-47a711f9ea3d
+
+
