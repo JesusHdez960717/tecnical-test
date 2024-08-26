@@ -2,7 +2,7 @@ name: tecnical_test
 description: "Prueba tecnica para plaza de desarrollador Flutter"
 publish_to: 'none'
 
-version: 0.0.1+1
+version: 1.0.0+1
 
 environment:
   flutter: ^3.24.0
