@@ -1,5 +1,8 @@
 # tecnical_test
 
+## Prueba Técnica
+[Prueba Técnica.pdf](https://github.com/user-attachments/files/16742834/Prueba.Tecnica.pdf)
+
 ## Flutter version
 
 El proyecto se desarrolló y probó utlizando la version `3.24.0` del sdk de flutter, configurada
